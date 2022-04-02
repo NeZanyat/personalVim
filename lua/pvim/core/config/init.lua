@@ -1,5 +1,5 @@
-local utils = require"pvim.core.utils"
-local Log = require"pvim.core.log"
+local utils = require "pvim.core.misc.utils"
+local Log = require "pvim.core.misc.log"
 
 local M = {}
 local user_config_dir = get_config_dir()
@@ -9,7 +9,7 @@ function M:get_user_config_path()
   return user_config_file
 end
 
-local function apply_defaults(configs, defaults)
+function M:apply_defaults(configs, defaults)
   configs = configs or {}
   return vim.tbl_deep_extend("keep", configs, defaults)
 end

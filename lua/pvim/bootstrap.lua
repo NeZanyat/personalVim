@@ -70,7 +70,6 @@ function M:init(base_dir)
   self.packer_install_dir = join_paths(self.runtime_dir, "site", "pack", "packer", "start", "packer.nvim")
   self.packer_cache_path = join_paths(self.config_dir, "plugin", "packer_compiled.lua")
 
-
   ---Get the full path to personalVim's base directory
   ---@return string
   function _G.get_pvim_base_dir()
@@ -91,9 +90,19 @@ function M:init(base_dir)
     vim.cmd [[let &packpath = &runtimepath]]
   end
 
-  require"pvim.core":init()
-
   return self
+end
+
+function M:init_modules()
+  for _, module in ipairs(PVIM_MODULES) do
+    require(module):init()
+  end
+end
+
+function M:load_modules()
+  for _, module in ipairs(PVIM_MODULES) do
+    require(module):load()
+  end
 end
 
 return M
