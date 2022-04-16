@@ -1,3 +1,1 @@
-require("one_monokai").setup {
-  transparent = false,
-}
+require("one_monokai").setup(pvim.ui.one_monokai)

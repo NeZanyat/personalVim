@@ -19,4 +19,16 @@ function M:resolve_plugin_config(module_name, plugin_name)
   end
 end
 
+function M:exec_config(file_path)
+  local ok, _ = pcall(dofile, file_path)
+  if not ok then
+    print("Invalid configuration file " .. file_path)
+  end
+end
+
+function M:setup_plugin_config(module_name, plugin_name)
+  local plugin_config_file = M:resolve_plugin_config(module_name, plugin_name)
+  M:exec_config(plugin_config_file)
+end
+
 return M
