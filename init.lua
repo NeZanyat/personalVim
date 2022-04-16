@@ -11,5 +11,5 @@ if not vim.tbl_contains(vim.opt.rtp:get(), base_dir) then
   vim.opt.rtp:append(base_dir)
 end
 
-require("pvim"):init()
 require("modules"):init()
+require("pvim"):init()

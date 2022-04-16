@@ -14,4 +14,9 @@ function M:join_paths(...)
   return result
 end
 
+function M:is_file(path)
+  local stat = uv.fs_stat(path)
+  return stat and stat.type == "file" or false
+end
+
 return M

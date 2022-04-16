@@ -1,3 +1,4 @@
+local helpers = require "pvim.helpers"
 local M = {}
 
 function M:get_config_dir()
@@ -22,6 +23,12 @@ function M:get_cache_dir()
     return vim.fn.stdpath "config"
   end
   return pvim_cache_dir
+end
+
+function M:get_src_root()
+  local pvim_runtime_dir = M:get_runtime_dir()
+
+  return helpers:join_paths(pvim_runtime_dir, "pvim", "lua")
 end
 
 return M
