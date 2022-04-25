@@ -1,3 +1,5 @@
 return {
-  plugins = {},
+  plugins = {
+    { "wbthomason/packer.nvim" },
+  },
 }

@@ -4,7 +4,7 @@ local uv = vim.loop
 local path_sep = uv.os_uname().version:match "Windows" and "\\" or "/"
 
 function M:apply_defaults(config, defaults)
-  local result = vim.tbl_extend("keep", config, defaults)
+  local result = vim.tbl_deep_extend("keep", config, defaults)
 
   return result
 end
