@@ -1,9 +1,6 @@
 return {
   ui = {
-    colorscheme = "desert",
-    one_monokai = {
-      transparent = true,
-    },
+    colorscheme = nil,
     nvimtree = {
       open_on_setup = true,
       view = {

@@ -7,10 +7,11 @@ function M:collect_configuration()
   end
 end
 
+-- Iterates over modules from global `PVIM_MODULES` variable and adds them to `pvim.plugins`
 function M:collect_plugins()
   for _, module_name in pairs(PVIM_MODULES) do
     local module = require("modules." .. module_name .. ".plugins")
-    for i, plugin in ipairs(module:get()) do
+    for _, plugin in ipairs(module:get()) do
       table.insert(pvim.plugins, plugin)
     end
   end
@@ -28,11 +29,15 @@ function M:apply_vim_settings()
   end
 end
 
+-- Collects default configuration into `pvim` variable
+-- Collects plugins from modules
 function M:init()
   M:collect_configuration()
   M:collect_plugins()
 end
 
+-- Loads plugins into runtime
+-- Applies vim settings from global `pvim` variable
 function M:load()
   M:load_plugins()
   M:apply_vim_settings()
